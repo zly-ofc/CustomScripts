@@ -133,15 +133,15 @@ $Bam = Foreach ($Sid in $Users) {
                     Get-Signature -FilePath $path
                 } else { $sig = "" }				
                 [PSCustomObject]@{
-                    'Examiner Time' = $TimeLocal
-                    'Last Execution Time (UTC)' = $TimeUTC
-                    'Last Execution User Time' = $TimeUser
-                    Application = $f
-                    Path = $path
-                    Signature = $Sig
-                    Felhasznalo = $User
-                    SID = $Sid
-                    Regpath = $rp
+                    'Vegrehajtasi Ido' = $TimeLocal
+                    'Utolso Futas Ideje (UTC)' = $TimeUTC
+                    'Utolso Futasi Felhasznalo Ideje' = $TimeUser
+                    'Alkalmazas' = $f
+                    'Eleresi Ut' = $path
+                    'Alairas' = $Sig
+                    'Felhasznalo' = $User
+                    'SID' = $Sid
+                    'Regpath' = $rp
                 }
             }
         }
