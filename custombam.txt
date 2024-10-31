@@ -38,11 +38,16 @@ Clear-Host
 
 Write-Host "";
 Write-Host ""; 
-Write-Host -ForegroundColor Red " ______  __       ______   __  __   ______   __       ______   __   __       ______   ______    "; 
-Write-Host -ForegroundColor Red "/\  == \/\ \     /\  __ \ /\ \_\ \ /\  ___\ /\ \     /\  __ \ /\ "-.\ \     /\  ___\ /\  ___\  "; 
-Write-Host -ForegroundColor Red "\ \  _-/\ \ \____\ \  __ \\ \____ \\ \ \____\ \ \____\ \  __ \\ \ \-.  \    \ \___  \\ \___  \  ";
-Write-Host -ForegroundColor Red " \ \_\   \ \_____\\ \_\ \_\\/\_____\\ \_____\\ \_____\\ \_\ \_\\ \_\\"\_\    \/\_____\\/\_____\ ";
-Write-Host -ForegroundColor Red "  \/_/    \/_____/ \/_/\/_/ \/_____/ \/_____/ \/_____/ \/_/\/_/ \/_/ \/_/     \/_____/ \/_____/ ";
+Write-Host @"
+
+ ______  __       ______   __  __   ______   __       ______   __   __       ______   ______    
+/\  == \/\ \     /\  __ \ /\ \_\ \ /\  ___\ /\ \     /\  __ \ /\ "-.\ \     /\  ___\ /\  ___\   
+\ \  _-/\ \ \____\ \  __ \\ \____ \\ \ \____\ \ \____\ \  __ \\ \ \-.  \    \ \___  \\ \___  \  
+ \ \_\   \ \_____\\ \_\ \_\\/\_____\\ \_____\\ \_____\\ \_\ \_\\ \_\\"\_\    \/\_____\\/\_____\ 
+  \/_/    \/_____/ \/_/\/_/ \/_____/ \/_____/ \/_____/ \/_/\/_/ \/_/ \/_/     \/_____/ \/_____/ 
+                                                                                                
+
+"@ -ForegroundColor Red
 Write-Host "";
 Write-Host -ForegroundColor Blue "   Made by PlayClan " -zly
 Write-Host -ForegroundColor Red "dc.playclan.hu";
@@ -123,8 +128,3 @@ $Bam = Foreach ($Sid in $Users){$u++
                              }}}}}
 
 $Bam | Out-GridView -PassThru -Title "BAM key entries $($Bam.count)  - User TimeZone: ($UserTime) -> ActiveBias: ( $Bias) - DayLightTime: ($Day)"
-
-$sw.stop()
-$t = $sw.Elapsed.TotalMinutes
-Write-Host ""
-Write-Host "Elapsed Time $t Minutes" -ForegroundColor Yellow
