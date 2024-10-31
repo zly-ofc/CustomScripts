@@ -49,8 +49,8 @@ Write-Host @"
 
 "@ -ForegroundColor Red
 Write-Host "";
-Write-Host -ForegroundColor Blue "   Made by PlayClan " -zly
-Write-Host -ForegroundColor Red "dc.playclan.hu";
+Write-Host -ForegroundColor Blue "   Keszitette: PlayClan " - ScreenShare
+Write-Host -ForegroundColor Red   "dc.playclan.hu";
 Write-Host "";
 
 function Test-Admin {;$currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent());$currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator);}
@@ -82,7 +82,7 @@ $Bam = Foreach ($Sid in $Users){$u++
             
         foreach($rp in $rpath){
            $BamItems = Get-Item -Path "$($rp)UserSettings\$Sid" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Property
-           Write-Host -ForegroundColor Red "Extracting " -NoNewLine
+           Write-Host -ForegroundColor Red "Kicsomagolas " -NoNewLine
            Write-Host -ForegroundColor Blue "$($rp)UserSettings\$SID"
            $bi = 0 
 
