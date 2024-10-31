@@ -44,7 +44,7 @@ Write-Host -ForegroundColor Red "\ \  _-/\ \ \____\ \  __ \\ \____ \\ \ \____\ \
 Write-Host -ForegroundColor Red " \ \_\   \ \_____\\ \_\ \_\\/\_____\\ \_____\\ \_____\\ \_\ \_\\ \_\\"\_\    \/\_____\\/\_____\ ";
 Write-Host -ForegroundColor Red "  \/_/    \/_____/ \/_/\/_/ \/_____/ \/_____/ \/_____/ \/_/\/_/ \/_/ \/_/     \/_____/ \/_____/ ";
 Write-Host "";
-Write-Host -ForegroundColor Blue "   Made By Playclan 
+Write-Host -ForegroundColor Blue "   Made by PlayClan " -zly
 Write-Host -ForegroundColor Red "dc.playclan.hu";
 Write-Host "";
 
