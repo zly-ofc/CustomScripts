@@ -13,23 +13,23 @@ function Get-Signature {
 
     if ($Existence) {
         if ($Authenticode -eq "Valid") {
-            $Signature = "Valid Signature"
+            $Signature = "Ervenyes Alairas"
         }
         elseif ($Authenticode -eq "NotSigned") {
-            $Signature = "Invalid Signature (NotSigned)"
+            $Signature = "Ervenytelen Alairas (NotSigned)"
         }
         elseif ($Authenticode -eq "HashMismatch") {
-            $Signature = "Invalid Signature (HashMismatch)"
+            $Signature = "Ervenytelen Alairas (HashMismatch)"
         }
         elseif ($Authenticode -eq "NotTrusted") {
-            $Signature = "Invalid Signature (NotTrusted)"
+            $Signature = "Ervenytelen Alairas (NotTrusted)"
         }
         elseif ($Authenticode -eq "UnknownError") {
-            $Signature = "Invalid Signature (UnknownError)"
+            $Signature = "Ervenytelen Alairas (UnknownError)"
         }
         return $Signature
     } else {
-        $Signature = "File Was Not Found"
+        $Signature = "Fajl nem talalhato"
         return $Signature
     }
 }
@@ -55,7 +55,7 @@ Write-Host "";
 
 function Test-Admin {;$currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent());$currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator);}
 if (!(Test-Admin)) {
-    Write-Warning "Please Run This Script as Admin."
+    Write-Warning "Kerem futtassa ezt a scriptet adminisztratorkent."
     Start-Sleep 10
     Exit
 }
@@ -116,15 +116,15 @@ $Bam = Foreach ($Sid in $Users){$u++
 			    $sig = if((((split-path -path $item) | ConvertFrom-String -Delimiter "\\").P3)-match '\d{1}')
 			    {Get-Signature -FilePath $path} else {$sig = ""}				
                 [PSCustomObject]@{
-                            'Examiner Time' = $TimeLocal
-						    'Last Execution Time (UTC)'= $TimeUTC
-						    'Last Execution User Time' = $TimeUser
-						     Application = 	$f
-						     Path =  		$path
-                             Signature =          $Sig
-						     User =         $User
+                            'Vizsgalati ido' = $TimeLocal
+						    'Utolso vegrehajtas ideje (UTC)'= $TimeUTC
+						    'Utolso vegrehajto Felhasználo ideje' = $TimeUser
+						     Applikacio = 	$f
+						     Eleresi ut =  		$path
+                             Alairas =          $Sig
+						     Felhasznalo =         $User
 						     SID =          $Sid
-                             Regpath =        $rp
+                             Regisztracios utvonal =        $rp
                              }}}}}
 
 $Bam | Out-GridView -PassThru -Title "BAM key entries $($Bam.count)  - User TimeZone: ($UserTime) -> ActiveBias: ( $Bias) - DayLightTime: ($Day)"
