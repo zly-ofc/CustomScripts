@@ -38,13 +38,14 @@ Clear-Host
 
 Write-Host "";
 Write-Host "";
-Write-Host -ForegroundColor Red " ______  __       ______   __  __   ______   __       ______   __   __       ______   ______";
-Write-Host -ForegroundColor Red "/\  == \/\ \     /\  __ \ /\ \_\ \ /\  ___\ /\ \     /\  __ \ /\  -.\ \     /\  ___\ /\  ___\";
-Write-Host -ForegroundColor Red "\ \  _-/\ \ \____\ \  __ \\ \____ \\ \ \____\ \ \____\ \  __ \\ \ \-.  \    \ \___  \\ \___  \";
-Write-Host -ForegroundColor Red " \ \_\   \ \_____\\ \_\ \_\\/\_____\\ \_____\\ \_____\\ \_\ \_\\ \_\\ \_\    \/\_____\\/\_____\";
-Write-Host -ForegroundColor Red "  \/_/    \/_____/ \/_/\/_/ \/_____/ \/_____/ \/_____/ \/_/\/_/ \/_/ \/_/     \/_____/ \/_____/";
-
+Write-Host " ______  __       ______   __  __   ______   __       ______   __   __       ______   ______"; -ForegroundColor Green
+Write-Host "/\  == \/\ \     /\  __ \ /\ \_\ \ /\  ___\ /\ \     /\  __ \ /\  -.\ \     /\  ___\ /\  ___\"; -ForegroundColor Green
+Write-Host "\ \  _-/\ \ \____\ \  __ \\ \____ \\ \ \____\ \ \____\ \  __ \\ \ \-.  \    \ \___  \\ \___  \"; -ForegroundColor Green
+Write-Host " \ \_\   \ \_____\\ \_\ \_\\/\_____\\ \_____\\ \_____\\ \_\ \_\\ \_\\ \_\    \/\_____\\/\_____\"; -ForegroundColor Green
+Write-Host "  \/_/    \/_____/ \/_/\/_/ \/_____/ \/_____/ \/_____/ \/_/\/_/ \/_/ \/_/     \/_____/ \/_____/"; -ForegroundColor Green
+Write-Host "";
 Write-Host -ForegroundColor Blue "				  dc.playclan.hu" -NoNewLine
+Write-Host "";
 Write-Host "";
 Write-Host "";
 
