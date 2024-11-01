@@ -44,10 +44,10 @@ Write-Host @"
 \ \  _-/\ \ \____\ \  __ \\ \____ \\ \ \____\ \ \____\ \  __ \\ \ \-.  \    \ \___  \\ \___  \  
  \ \_\   \ \_____\\ \_\ \_\\/\_____\\ \_____\\ \_____\\ \_\ \_\\ \_\\"\_\    \/\_____\\/\_____\ 
   \/_/    \/_____/ \/_/\/_/ \/_____/ \/_____/ \/_____/ \/_/\/_/ \/_/ \/_/     \/_____/ \/_____/ 
-"@ -ForegroundColor Red
+"@ -ForegroundColor DarkGreen
 Write-Host ""
-Write-Host -ForegroundColor Blue "   Kesztette: PlayClan " 
-Write-Host -ForegroundColor Red "dc.playclan.hu"
+Write-Host  "   Kesztette: PlayClan" -ForegroundColor Green
+Write-Host  "   dc.playclan.hu" -ForegroundColor Green
 Write-Host ""
 
 function Test-Admin {
@@ -94,7 +94,7 @@ $Bam = Foreach ($Sid in $Users) {
     foreach($rp in $rpath) {
         $BamItems = Get-Item -Path "$($rp)UserSettings\$Sid" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Property
         Write-Host -ForegroundColor Red "Kicsomagolas " -NoNewLine
-        Write-Host -ForegroundColor Blue "$($rp)UserSettings\$SID"
+        Write-Host -ForegroundColor Green "$($rp)UserSettings\$SID"
         $bi = 0
 
         Try {
