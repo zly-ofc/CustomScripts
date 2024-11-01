@@ -9,27 +9,27 @@ function Get-Signature {
 
     $Existence = Test-Path -PathType "Leaf" -Path $FilePath
     $Authenticode = (Get-AuthenticodeSignature -FilePath $FilePath -ErrorAction SilentlyContinue).Status
-    $Signature = "Invalid Signature (UnknownError)"
+    $Signature = "Ervenytelen alairas (Ismeretlen hiba)"
 
     if ($Existence) {
         if ($Authenticode -eq "Valid") {
-            $Signature = "Valid Signature"
+            $Signature = "Ervenyes alairas"
         }
         elseif ($Authenticode -eq "NotSigned") {
-            $Signature = "Invalid Signature (NotSigned)"
+            $Signature = "Ervenytelen alairas (Nem alairt)"
         }
         elseif ($Authenticode -eq "HashMismatch") {
-            $Signature = "Invalid Signature (HashMismatch)"
+            $Signature = "Ervenytelen alairas (Hash elteres)"
         }
         elseif ($Authenticode -eq "NotTrusted") {
-            $Signature = "Invalid Signature (NotTrusted)"
+            $Signature = "Ervenytelen alairas (Nem megbizhato)"
         }
         elseif ($Authenticode -eq "UnknownError") {
-            $Signature = "Invalid Signature (UnknownError)"
+            $Signature = "Ervenytelen alairas (Ismeretlen hiba)"
         }
         return $Signature
     } else {
-        $Signature = "File Was Not Found"
+        $Signature = "A fajl nem talalhato"
         return $Signature
     }
 }
@@ -38,20 +38,18 @@ Clear-Host
 
 Write-Host "";
 Write-Host "";
-Write-Host -ForegroundColor Red "   ██████╗ ███████╗██████╗     ██╗      ██████╗ ████████╗██╗   ██╗███████╗    ██████╗  █████╗ ███╗   ███╗";
-Write-Host -ForegroundColor Red "   ██╔══██╗██╔════╝██╔══██╗    ██║     ██╔═══██╗╚══██╔══╝██║   ██║██╔════╝    ██╔══██╗██╔══██╗████╗ ████║";
-Write-Host -ForegroundColor Red "   ██████╔╝█████╗  ██║  ██║    ██║     ██║   ██║   ██║   ██║   ██║███████╗    ██████╔╝███████║██╔████╔██║";
-Write-Host -ForegroundColor Red "   ██╔══██╗██╔══╝  ██║  ██║    ██║     ██║   ██║   ██║   ██║   ██║╚════██║    ██╔══██╗██╔══██║██║╚██╔╝██║";
-Write-Host -ForegroundColor Red "   ██║  ██║███████╗██████╔╝    ███████╗╚██████╔╝   ██║   ╚██████╔╝███████║    ██████╔╝██║  ██║██║ ╚═╝ ██║";
-Write-Host -ForegroundColor Red "   ╚═╝  ╚═╝╚══════╝╚═════╝     ╚══════╝ ╚═════╝    ╚═╝    ╚═════╝ ╚══════╝    ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝";
-Write-Host "";
-Write-Host -ForegroundColor Blue "   Made By PureIntent (Shitty ScreenSharer) For Red Lotus ScreenSharing and DFIR - " -NoNewLine
-Write-Host -ForegroundColor Red "discord.gg/redlotus";
+Write-Host -ForegroundColor Red " ______  __       ______   __  __   ______   __       ______   __   __       ______   ______    ";
+Write-Host -ForegroundColor Red "/\  == \/\ \     /\  __ \ /\ \_\ \ /\  ___\ /\ \     /\  __ \ /\ "-.\ \     /\  ___\ /\  ___\   ";
+Write-Host -ForegroundColor Red "\ \  _-/\ \ \____\ \  __ \\ \____ \\ \ \____\ \ \____\ \  __ \\ \ \-.  \    \ \___  \\ \___  \  ";
+Write-Host -ForegroundColor Red " \ \_\   \ \_____\\ \_\ \_\\/\_____\\ \_____\\ \_____\\ \_\ \_\\ \_\\"\_\    \/\_____\\/\_____\ ";
+Write-Host -ForegroundColor Red "  \/_/    \/_____/ \/_/\/_/ \/_____/ \/_____/ \/_____/ \/_/\/_/ \/_/ \/_/     \/_____/ \/_____/ ";
+
+Write-Host -ForegroundColor Blue "				  dc.playclan.hu" -NoNewLine
 Write-Host "";
 
 function Test-Admin {;$currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent());$currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator);}
 if (!(Test-Admin)) {
-    Write-Warning "Please Run This Script as Admin."
+    Write-Warning "Kerlek, futtasd ezt a szkriptet rendszergazdakent."
     Start-Sleep 10
     Exit
 }
@@ -60,12 +58,12 @@ $sw = [Diagnostics.Stopwatch]::StartNew()
 
 if (!(Get-PSDrive -Name HKLM -PSProvider Registry)){
     Try{New-PSDrive -Name HKLM -PSProvider Registry -Root HKEY_LOCAL_MACHINE}
-    Catch{Write-Warning "Error Mounting HKEY_Local_Machine"}
+    Catch{Write-Warning "Hiba a HKEY_Local_Machine csatlakoztatasakor"}
 }
 $bv = ("bam", "bam\State")
 Try{$Users = foreach($ii in $bv){Get-ChildItem -Path "HKLM:\SYSTEM\CurrentControlSet\Services\$($ii)\UserSettings\" | Select-Object -ExpandProperty PSChildName}}
 Catch{
-    Write-Warning "Error Parsing BAM Key. Likely unsupported Windows Version"
+    Write-Warning "Hiba a BAM kulcs elemzese kor. Valoszinuleg nem tamogatott Windows verzio."
     Exit
 }
 $rpath = @("HKLM:\SYSTEM\CurrentControlSet\Services\bam\","HKLM:\SYSTEM\CurrentControlSet\Services\bam\state\")
@@ -78,7 +76,7 @@ $Bam = Foreach ($Sid in $Users){$u++
             
         foreach($rp in $rpath){
            $BamItems = Get-Item -Path "$($rp)UserSettings\$Sid" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Property
-           Write-Host -ForegroundColor Red "Extracting " -NoNewLine
+           Write-Host -ForegroundColor Red "Kivonat keszítese " -NoNewLine
            Write-Host -ForegroundColor Blue "$($rp)UserSettings\$SID"
            $bi = 0 
 
@@ -112,20 +110,20 @@ $Bam = Foreach ($Sid in $Users){$u++
 			    $sig = if((((split-path -path $item) | ConvertFrom-String -Delimiter "\\").P3)-match '\d{1}')
 			    {Get-Signature -FilePath $path} else {$sig = ""}				
                 [PSCustomObject]@{
-                            'Examiner Time' = $TimeLocal
-						    'Last Execution Time (UTC)'= $TimeUTC
-						    'Last Execution User Time' = $TimeUser
-						     Application = 	$f
-						     Path =  		$path
-                             Signature =          $Sig
-						     User =         $User
-						     SID =          $Sid
-                             Regpath =        $rp
+                            'Vizsgalo Idopont' = $TimeLocal
+						    'Utolso Futasi Idopont (UTC)'= $TimeUTC
+						    'Utolso Futasi Felhasznalo Idopont' = $TimeUser
+						     'Alkalmazas' = 	$f
+						     'Utvonal' =  		$path
+                             'Alairas' =          $Sig
+						     'Felhasznalo' =         $User
+						     'SID' =          $Sid
+                             'Regisztracios Utvonal' =        $rp
                              }}}}}
 
-$Bam | Out-GridView -PassThru -Title "BAM key entries $($Bam.count)  - User TimeZone: ($UserTime) -> ActiveBias: ( $Bias) - DayLightTime: ($Day)"
+$Bam | Out-GridView -PassThru -Title "BAM kulcs bejegyzesek $($Bam.count)  - Felhasznalo Idoszona: ($UserTime) -> AktivBias: ( $Bias) - Nyari Idoszama: ($Day)"
 
 $sw.stop()
 $t = $sw.Elapsed.TotalMinutes
 Write-Host ""
-Write-Host "Elapsed Time $t Minutes" -ForegroundColor Yellow
+Write-Host "Eltelt Idő $t Perc" -ForegroundColor Yellow
